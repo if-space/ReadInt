@@ -13,17 +13,20 @@ namespace Lessons
 
         static int GetIntegerFromUser()
         {
-            while (true)
+            int number = 0;
+            bool isWork = false;
+
+            while (isWork == false)
             {
                 Console.WriteLine("Введите целое число: ");
 
                 string userInput = Console.ReadLine();
 
-                if (int.TryParse(userInput, out int number))
-                    return number;
-                else
-                    Console.WriteLine("Введено некорректное число");
+                isWork = int.TryParse(userInput, out number);
+
+                if (isWork == false)
+                    Console.WriteLine("Некорректное число");
             }
+            return number;
         }
     }
-}
